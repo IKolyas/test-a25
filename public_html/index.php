@@ -1,8 +1,42 @@
 <?php
 
-$rest_json = file_get_contents("php://input");
-$_POST = json_decode($rest_json, true);
+use services\Autoloader;
+use models\repositories\OrderRepository;
+use requests\OrderRequest;
 
-var_dump($_POST);
+//Подключаем автолоадер
+include $_SERVER['DOCUMENT_ROOT'] . '/../services/Autoloader.php';
+spl_autoload_register([new Autoloader(), 'loadClass']);
 
-require('../views/main.php');
+//если не ajax отдаём вёрстку
+if (empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest') {
+    require('../views/main.php');
+    return;
+}
+
+
+//если ajax, проверяем метод
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    //если метод POST проверяем метод
+    $_REQUEST = json_decode(file_get_contents('php://input'), true);
+
+    $request = new OrderRequest(); // создаем объект класса Request
+    $validator = $request->validate(); //$request->validate()
+
+    header('Content-Type: application/json; charset=utf-8');
+    if (empty($validator)) {
+        $order = (new OrderRepository())->add($request->getParams());
+        $success = [
+            'status' => 'success',
+            'message' => 'Заявка успешно отправлена!',
+            'order' => $order
+        ];
+        echo json_encode($success);
+    } else {
+        $error = [
+            'status' => 'error',
+            'message' => $validator,
+        ];
+        echo json_encode($error);
+    }
+}
