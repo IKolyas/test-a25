@@ -14,13 +14,6 @@ if (empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
     return;
 }
 
-function render_email($name, $phone, $mail)
-{
-    ob_start();
-    include "../views/mail.php'";
-    return ob_get_contents();
-}
-
 //если ajax, проверяем метод
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     //если метод POST проверяем метод
