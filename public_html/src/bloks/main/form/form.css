@@ -1,0 +1,28 @@
+
+.container__form {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.container__form form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 35%;
+    margin-bottom: 60px;
+}
+
+.container__form form > input {
+    margin: 6px 0;
+    padding: 5px;
+}
+
+.container__form form h3 {
+    text-align: center;
+}
+
+.container__form form button {
+    margin-top: 3px;
+    padding: 5px 0;
+}
