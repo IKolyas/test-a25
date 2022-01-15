@@ -1,0 +1,73 @@
+/*MAIN*/
+@import "form/form.css";
+main {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container__main {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-content: stretch;
+    height: 100%;
+}
+
+.main_content {
+    width: 50%;
+    font-style: italic;
+    margin-bottom: 50px;
+}
+
+/* Слайдер */
+.main_content:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.slider {
+    position: relative;
+    margin: auto;
+}
+
+/* Анимация слайдов */
+.slider .slider_item {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+.main_content:first-child h1 {
+    margin-bottom: 0;
+    max-width: 40%;
+}
+
+.main_content:first-child p {
+    margin-top: 5px;
+    max-width: 40%;
+}
+
+.main_content p {
+    margin-top: 5px;
+    padding-right: 20%;
+}
+
+.main_content h2 {
+    margin-bottom: 0;
+    padding-right: 20%;
+}
+
+.content_banner {
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+/*END MAIN*/
