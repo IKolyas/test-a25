@@ -121,6 +121,9 @@
     </div>
     <div class="container container__form">
         <form method="post" action="/" id="order_form">
+            <div class="success_order">
+                <span>Ваша заявка успешно оформлена!</span>
+            </div>
             <h3>Заказать</h3>
             <input type="text" name="user_name" placeholder="Имя">
             <input type="text" name="user_phone" placeholder="Телефон">
